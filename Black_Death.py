@@ -8,7 +8,11 @@ Created on Tue Nov 22 15:22:40 2022
 # Import packages
 
 import csv
-import matplotlib
+import matplotlib.pyplot as plt
+
+deaths = []
+population = []
+rats = []
 
 
 # Load in dataset for population density and rats caught
@@ -20,13 +24,13 @@ with open('population.txt', newline='') as p:
 with open('rats.txt', newline='') as r:
     dataset = csv.reader(r, quoting=csv.QUOTE_NONNUMERIC)
     rats = [line for line in dataset]
+    dataset = csv.reader(r, quoting=csv.QUOTE_NONNUMERIC)
+    rats = [line for line in dataset]
  
 # Test both txt files has been loaded in as raster maps
-matplotlib.pyplot.imshow(population)
-matplotlib.pyplot.imshow(rats)
+plt.imshow(population)
+plt.imshow(rats)
 
-
-deaths = []
 
 for x in len(rats):
     line_deaths = []
@@ -34,6 +38,19 @@ for x in len(rats):
         line_deaths.append((0.8*rats[x][i])*(1.3*pop))
 
     deaths += line_deaths
+    
+for j, rat_line in enumerate(rats):
+   line_deaths = []
+   for i, pop in enumerate(population[j]):
+       line_deaths.append((0.8*rat_line[i])*(1.3*pop))
+
+   deaths += [line_deaths]
+
+plt.imshow(deaths)
+plt.show()
+
+
+x = 9
 
 
 
