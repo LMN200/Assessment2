@@ -26,6 +26,14 @@ matplotlib.pyplot.imshow(population)
 matplotlib.pyplot.imshow(rats)
 
 
+deaths = []
+
+for x in len(rats):
+    line_deaths = []
+    for i, pop in enumerate(population[x]):
+        line_deaths.append((0.8*rats[x][i])*(1.3*pop))
+
+    deaths += line_deaths
 
 
 
