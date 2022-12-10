@@ -76,8 +76,8 @@ STEP 3
 # Display all 3 maps
 f, [ax1, ax2, ax3] = plt.subplots(1,3, figsize= (12 , 3))
 pp = ax1.imshow(population, cmap = 'OrRd')
-rr = ax2.imshow(rats, cmap = 'OrRd')
-dd = ax3.imshow(deaths, cmap = 'OrRd')
+rr = ax2.imshow(rats, cmap = 'Blues')
+dd = ax3.imshow(deaths, cmap = 'Greens')
 # add titles
 ax1.set_title('Population Density')
 ax2.set_title('Rats Caught')
@@ -86,7 +86,6 @@ ax3.set_title('Deaths')
 f.colorbar(pp, ax=ax1)
 f.colorbar(rr, ax=ax2)
 f.colorbar(dd, ax=ax3)
-
 
 
 '''
