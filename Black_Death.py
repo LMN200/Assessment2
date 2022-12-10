@@ -13,6 +13,10 @@ STEP 1
 import csv
 import matplotlib.pyplot as plt
 import numpy as np
+import tkinter
+import matplotlib.backends.backend_tkagg as tkagg
+import matplotlib; matplotlib.use("TkAgg")
+import matplotlib.animation
 
 population = []
 rats = []
@@ -80,8 +84,8 @@ rr = ax2.imshow(rats, cmap = 'Blues')
 dd = ax3.imshow(deaths, cmap = 'Greens')
 # add titles
 ax1.set_title('Population Density')
-ax2.set_title('Rats Caught')
-ax3.set_title('Deaths')
+ax2.set_title('Rats Caught per Week')
+ax3.set_title('Deaths per Week')
 # add colorbars
 f.colorbar(pp, ax=ax1)
 f.colorbar(rr, ax=ax2)
@@ -91,17 +95,66 @@ f.colorbar(dd, ax=ax3)
 '''
 STEP 4
 '''
+# # # save numpy array to a new txt file
+# np.savetxt('absolute_deaths.txt', deaths, delimiter = ',', newline = '', fmt = '%i')
+
+# # check it has worked and produces same map as deaths list
+# # with open('absolute_deaths.txt', newline='') as ad:
+# #     dataset3 = csv.reader(ad, quoting=csv.QUOTE_NONNUMERIC)
+# #     absolute_deaths = [line for line in dataset3]
+# # ad.close()
+
+# absolute_deaths = np.loadtxt('absolute_deaths.txt', dtype = int, delimiter = ',')
+
+# plt.imshow(absolute_deaths)
 
 
+# with open('absolute_deaths2.txt', 'w') as ab:
+#     for item in deaths:
+#         # write each item on a new line
+#         ab.write("%s\n" % item)
+
+# with open('absolute_deaths2.txt', newline='') as ab2:
+#     dataset3 = csv.reader(ab2, quoting=csv.QUOTE_NONNUMERIC)
+#     absolute_deaths = [line for line in dataset3]
+# ab2.close()
 
 '''
 STEP 5
 '''
+# total deaths per week. 
+
 
 
 '''
 STEP 6
 '''
+# Allows the user to change the parameter weights for the equation (for example with a scrollbar).
+# Create GUI
 
-# d = (0.8*r)(1.3*p)
-# need to create a new list and run the pairs of data from the rastor map through the equation. Then write to a CSV file.
+def run():
+    pass 
+
+
+root = tkinter.Tk() 
+root.wm_title("Model")
+
+canvas = tkagg.FigureCanvasTkAgg(f, master=root)
+canvas._tkcanvas.pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=1)
+
+menu = tkinter.Menu(root)  # set up menu
+root.config(menu=menu)
+
+model_menu = tkinter.Menu(menu)
+menu.add_cascade(label="Model", menu=model_menu)
+
+model_menu.add_command(label="Run model", command=run())
+
+w = tkinter.Canvas(root, width=200, height=200)
+w.pack()
+w.create_rectangle(0, 0, 200, 200, fill="blue")
+
+print('we got this far')
+canvas.draw()
+
+tkinter.mainloop()
