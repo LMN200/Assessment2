@@ -118,7 +118,7 @@ df_deaths.to_csv('absolute_deaths.txt')
 # # Test it has worked
 # # Read the saved absolute_deaths txt file back in
 # df_new_deaths = pd.read_csv ('absolute_deaths.txt')
-# # drop the exra columns
+# # drop the extra columns
 # cols_to_drop = ['Unnamed: 0']
 # df_new_deaths.drop(columns=cols_to_drop, inplace=True)
 # # Plot on graph to check it matches the original deaths graph. 
